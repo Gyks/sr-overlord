@@ -2,14 +2,16 @@ const express = require('express');
 const assert = require('assert');
 const MongoClient = require('mongodb').MongoClient;
 const users = require('./routes/users');
-
+const bodyParser = require('body-parser');
+const config = require('dotenv').config().parsed;
 const app = express();
 const port = 3333;
-const url = 'mongodb://localhost:27017';
+const url = `mongodb://${config.MONGO_USER}:${config.MONGO_PASSWORD}@${config.MONGO_HOST}:27017`;
 const dbName = 'srControls';
 const client = new MongoClient(url, { useUnifiedTopology: true });
 
 app.use(express.static('public'));
+app.use(bodyParser.json());
 app.use('/users', users);
 app.set('view engine', 'pug');
 
