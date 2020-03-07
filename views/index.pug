@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+html
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="/css/style.css" />
+  <link rel="shortcut icon" href="/maids/favicon.ico" />
+  script(href="https://yastatic.net/jquery/3.3.1/jquery.min.js")
+  head
+    meta( name='viewport', content='width=device-width, initial-scale=1 shrink-to-fit=no'  )
+    title Megami
+  body
+    ul.nav.justify-content-center
+      li.nav-item
+        a.nav-link.active.text-danger(href="#") Active
+      li.nav-item
+        a.nav-link Another Link
+    p.text-uppercase.font-weight-light.text-center.text-dark megami
+      plain.text-uppercase.font-weight-light.text-center.text-danger .red
+    img(src="./images/maids.jpg", class="img-fluid")
+    .container-fluid
+      .card-group.my-3
+        each val in [1, 2, 3]
+          .card.mx-3.shadow.p-3.mb-5.bg-white.rounded
+            img(src="./images/cardmaid.jpg" class="card-img-top")
+            .card-body
+              h5.card-title.text-truncate Boku No Hero Academia
+              p.card-text.my-1 Серия: #{val}
+              p.card-text.my-1 До конца срока осталось: 
+                plain.text-muted -24:53:45
+              p.card-text.my-1 Статус: 
+                plain.text-danger.font-weight-light Задержка
+              a.btn.btn-outline-danger.mt-3 Close
+      .card-group.my-3
+        each val in [5, 6, 7, 8]
+          .card.mx-3.shadow.p-3.mb-5.bg-white.rounded
+            img(src="./images/cardmaid.jpg" class="card-img-top")
+            .card-body
+              h5.card-title.text-truncate Boku No Hero Academia
+              p.card-text.my-1 Серия: #{val}
+              p.card-text.my-1 До конца срока осталось: 
+                plain.text-muted -24:53:45
+              p.card-text.my-1 Статус: 
+                plain.text-danger.font-weight-light Задержка
+              a.btn.btn-outline-danger.mt-3 Close
