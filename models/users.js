@@ -1,4 +1,5 @@
 const assert = require('assert');
+const objectId = require('mongodb').ObjectID;
 
 // CREATE USER
 async function addUser(db, nickname, fullName, seasonStatus, links) {
@@ -41,6 +42,7 @@ async function findUser(db, searchObject) {
 async function updateUser(db, searchObject, updateObject) {
   try {
     db = await db;
+    searchObject._id = objectId(searchObject._id);
     let r = await db
       .collection('users')
       .findOneAndUpdate(searchObject, updateObject);
@@ -55,6 +57,7 @@ async function updateUser(db, searchObject, updateObject) {
 async function deleteUser(db, searchObject) {
   try {
     db = await db;
+    searchObject._id = objectId(searchObject._id);
     let r = await db.collection('users').findOneAndDelete(searchObject);
     return r;
   } catch (err) {
@@ -63,8 +66,10 @@ async function deleteUser(db, searchObject) {
   }
 }
 
-exports.user = {
+exports.users = {
   addUser: addUser,
-  findUser: findUser
+  findUser: findUser,
+  updateUser: updateUser,
+  deleteUser: deleteUser
 };
 // app.locals.db try researching this
