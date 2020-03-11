@@ -2,7 +2,7 @@ const assert = require('assert');
 const objectId = require('mongodb').ObjectID;
 
 // CREATE USER
-async function addUser(db, nickname, fullName, seasonStatus, links) {
+async function addUser(db, { nickname, fullName, seasonStatus, links }) {
   try {
     db = await db; // temporary thing for debug purposes
     let r = await db.collection('users').insertOne({
@@ -12,6 +12,7 @@ async function addUser(db, nickname, fullName, seasonStatus, links) {
         secondName: fullName.secondName
       },
       seasonStatus: {
+        strikes: [], // by default its empty
         current: seasonStatus.current,
         lastUpdated: new Date()
       },

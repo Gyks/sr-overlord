@@ -28,5 +28,8 @@ html
               p.card-text.my-1 Статус: 
                 plain.text-success.font-weight-light #{data.seasonStatus.current} с 
                   plain.text-muted #{data.seasonStatus.lastUpdated}
+              p.card-text.my-1 Страйки:
+              each strike in data.seasonStatus.strikes
+                plain.text-muted #{strike + ", "}
               a.btn.btn-outline-danger.mt-3.mx-1 Fuck you
               a.btn.btn-outline-success.mt-3.mx-1 No, Fuck you

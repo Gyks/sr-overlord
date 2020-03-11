@@ -6,7 +6,8 @@ const router = express.Router();
 router.post('/create', async (req, res) => {
   const db = req.app.locals.db;
   console.log(req.body);
-  res.send('created?');
+  const result = await users.addUser(db, req.body);
+  res.send(result + ' ');
 });
 
 router.put('/update', async (req, res) => {
