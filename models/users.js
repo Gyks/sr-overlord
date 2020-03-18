@@ -28,6 +28,7 @@ async function addUser(db, { nickname, fullName, seasonStatus, links }) {
 }
 
 // GET USER
+// RENAME TO GET AND CHANGE PARAMS NAME TO idObject
 async function findUser(db, searchObject) {
   try {
     db = await db;
