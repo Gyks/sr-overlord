@@ -1,11 +1,11 @@
-const assert = require('assert');
-const objectId = require('mongodb').ObjectID;
+const assert = require("assert");
+const objectId = require("mongodb").ObjectID;
 
 // CREATE USER
 async function addUser(db, { nickname, fullName, seasonStatus, links }) {
   try {
     db = await db; // temporary thing for debug purposes
-    let r = await db.collection('users').insertOne({
+    let r = await db.collection("users").insertOne({
       nickname: nickname, // must be unique
       fullName: {
         firstName: fullName.firstName,
@@ -29,49 +29,47 @@ async function addUser(db, { nickname, fullName, seasonStatus, links }) {
 
 // GET USER
 // RENAME TO GET AND CHANGE PARAMS NAME TO idObject
-async function findUser(db, searchObject) {
+async function getUser(db, searchObject) {
   try {
     db = await db;
-    let r = await db.collection('users').findOne(searchObject);
+    let r = await db.collection("users").findOne(searchObject);
     return r;
   } catch (err) {
     console.log(err.stack);
-    return 'An error has occured';
+    return "An error has occured";
   }
 }
 
 // UPDATE USER
-async function updateUser(db, searchObject, updateObject) {
+async function updateUser(db, idObject, updateObject) {
   try {
     db = await db;
-    searchObject._id = objectId(searchObject._id);
+    idObject._id = objectId(idObject._id);
     let r = await db
-      .collection('users')
-      .findOneAndUpdate(searchObject, updateObject);
+      .collection("users")
+      .findOneAndUpdate(idObject, updateObject);
     return r;
   } catch (err) {
     console.log(err.stack);
-    return 'An error has occured';
+    return "An error has occured";
   }
 }
 
 // DELETE USER
-async function deleteUser(db, searchObject) {
+async function deleteUser(db, idObject) {
   try {
-    db = await db;
-    searchObject._id = objectId(searchObject._id);
-    let r = await db.collection('users').findOneAndDelete(searchObject);
+    idObject._id = objectId(searchObject._id);
+    let r = await db.collection("users").findOneAndDelete(searchObject);
     return r;
   } catch (err) {
     console.log(err.stack);
-    return 'An error has occured';
+    return "An error has occured";
   }
 }
 
 exports.users = {
   addUser: addUser,
-  findUser: findUser,
+  getUser: getUser,
   updateUser: updateUser,
   deleteUser: deleteUser
 };
-// app.locals.db try researching this
