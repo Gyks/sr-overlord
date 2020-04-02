@@ -4,6 +4,7 @@ const MongoClient = require("mongodb").MongoClient;
 
 const users = require("./routes/users");
 const titles = require("./routes/titles");
+const episodes = require("./routes/episodes");
 const bodyParser = require("body-parser");
 
 const config = require("dotenv").config().parsed;
@@ -17,6 +18,7 @@ app.use(express.static("public"));
 app.use(bodyParser.json());
 app.use("/users", users);
 app.use("/titles", titles);
+app.use("/episodes", episodes);
 app.set("view engine", "pug");
 
 (async function connectToDb() {

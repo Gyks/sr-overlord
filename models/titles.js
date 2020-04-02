@@ -1,13 +1,13 @@
-const assert = require("assert");
 const objectId = require("mongodb").ObjectID;
 
 // add destructuring in future as in users model
+// TODO add middleware
+// Think about how to make it DRY
 
 //CREATE -- works
 async function addTitle(db, titleObject) {
   try {
     let r = await db.collection("titles").insertOne(titleObject);
-    assert.equal(1, r.insertedCount);
     return r;
   } catch (err) {
     console.log(err.stack);

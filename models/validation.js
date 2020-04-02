@@ -74,12 +74,6 @@ db.createCollection("titles", {
       bsonType: "array"
     },
     episodies: {
-      bsonType: "int"
-    },
-    translators: {
-      bsonType: "array"
-    },
-    editors: {
       bsonType: "array"
     },
     links: {
@@ -93,6 +87,36 @@ db.createCollection("titles", {
           bsonType: "string"
         }
       }
+    }
+  }
+});
+
+db.createCollection("episodes", {
+  bsonType: "object",
+  required: [
+    "number",
+    "translators",
+    "editors",
+    "engSubDate",
+    "animeId",
+    "finishTime"
+  ],
+  properties: {
+    number: {
+      bsonType: "int",
+      description: "must be a int and is required"
+    },
+    translators: {
+      bsonType: "array"
+    },
+    editors: {
+      bsonType: "array"
+    },
+    engSubDate: {
+      bsonType: "date"
+    },
+    finishTime: {
+      bsonType: "date"
     }
   }
 });
